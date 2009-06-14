@@ -1,0 +1,7 @@
+.autotest
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+lib/hoe/minitest.rb
+lib/hoe/perforce.rb
