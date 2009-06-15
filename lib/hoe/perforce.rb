@@ -35,6 +35,7 @@ module Hoe::Perforce
 
       target_dir = File.directory?(version) ? version : "dev"
       branching  = target_dir == "dev"
+      pkg = File.basename(Dir.pwd)
 
       begin
         p4_integrate "dev", version if branching
@@ -50,13 +51,24 @@ module Hoe::Perforce
 
     task :prerelease => :branch
 
-    # TODO: ensure clean will run no matter what
-
-    task :postrelease => [:announce, :email, :clean]
+    task :postrelease => :announce do
+      system 'rake clean'
+    end
 
     task :email do
       sh "mv email.txt ..; open -e ../email.txt"
     end
+  end
+
+  ##
+  # perforce has an annoying "feature" that reads PWD and chdir's to
+  # it. Without either mucking in ENV or forcing a different kind of
+  # system call, it'll be in the original rake directory. I don't want
+  # that for these recipes, so we tack on ";" in order to force the
+  # right type of exec.
+
+  def p4sh cmd
+    sh "#{cmd};"
   end
 
   def validate_manifest_file manifest_dir
@@ -67,6 +79,7 @@ module Hoe::Perforce
     local_manifest = []
 
     Dir.chdir manifest_dir do
+      system 'rake clean'
       Find.find '.' do |f|
         local_manifest << f.sub(/^\.\//, '') if File.file? f
       end
@@ -92,17 +105,16 @@ module Hoe::Perforce
 
   def p4_revert dir
     puts "reverting #{dir}"
-    sh "p4 revert #{dir}/..."
+    p4sh "p4 revert #{dir}/..."
   end
 
   def p4_integrate from, to
-    puts "branching #{from} to #{to}"
     opened = `p4 opened ... 2>&1`
     raise "You have files open" unless opened =~ /file\(s\) not opened/
-    sh "p4 integrate #{from}/... #{to}/..."
+    p4sh "p4 integrate #{from}/... #{to}/..."
   end
 
   def p4_submit description
-    sh "p4 submit -d #{description.inspect} ..."
+    p4sh "p4 submit -d #{description.inspect} ..."
   end
 end
