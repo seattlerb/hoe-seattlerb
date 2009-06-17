@@ -3,5 +3,7 @@ History.txt
 Manifest.txt
 README.txt
 Rakefile
+lib/hoe/email.rb
 lib/hoe/minitest.rb
 lib/hoe/perforce.rb
+lib/hoe/seattlerb.rb
