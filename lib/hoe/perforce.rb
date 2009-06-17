@@ -54,10 +54,6 @@ module Hoe::Perforce
     task :postrelease => :announce do
       system 'rake clean'
     end
-
-    task :email do
-      sh "mv email.txt ..; open -e ../email.txt"
-    end
   end
 
   ##
