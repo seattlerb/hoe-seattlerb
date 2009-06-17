@@ -26,7 +26,7 @@ module Hoe::Email
 
     desc "Send an announcement email."
     task :send_email do
-      email = generate_email :full
+      message = generate_email :full
 
       with_config do |conf, _|
         host = conf["email"]["host"]
@@ -40,7 +40,7 @@ module Hoe::Email
         smtp = Net::SMTP.new(host, port)
         smtp.set_debug_output $stderr if $DEBUG
         smtp.start(*start_args) do |smtp|
-          smtp.send_message email, Array(email).first, *email_to
+          smtp.send_message message, Array(email).first, *email_to
         end
       end
     end
