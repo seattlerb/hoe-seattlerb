@@ -40,7 +40,7 @@ module Hoe::Email
         smtp = Net::SMTP.new(host, port)
         smtp.set_debug_output $stderr if $DEBUG
         smtp.start(*start_args) do |smtp|
-          smtp.send_message email, email.first, *email_to
+          smtp.send_message email, Array(email).first, *email_to
         end
       end
     end
