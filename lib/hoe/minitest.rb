@@ -1,5 +1,5 @@
 module Hoe::Minitest
-  VERSION = "1.0.0"
+  VERSION = "1.1.0"
 
   def initialize_minitest
     self.testlib = :minitest
