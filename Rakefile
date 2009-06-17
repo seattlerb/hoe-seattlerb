@@ -5,9 +5,7 @@ $: << 'lib'
 require 'rubygems'
 require 'hoe'
 
-Hoe.plugin :minitest
-Hoe.plugin :perforce
-Hoe.plugin :email
+Hoe.plugin :seattlerb
 
 Hoe.spec 'hoe-seattlerb' do
   developer('Ryan Davis', 'ryand-ruby@zenspider.com')
