@@ -4,25 +4,28 @@
 
 == DESCRIPTION:
 
-Hoe plugins providing tasks used by seattle.rb.
+Hoe plugins providing tasks used by seattle.rb including minitest,
+perforce, and email providing full front-to-back release/annouce
+automation.
 
 == FEATURES/PROBLEMS:
 
-* hoe/minitest - switches your project to minitest
-* hoe/perforce - automating how we release with perforce
+* hoe/minitest  - switches your project to minitest.
+* hoe/perforce  - automating how we release with perforce.
+* hoe/email     - automates sending release email.
+* hoe/seattlerb - activates all the seattlerb plugins.
 
 == SYNOPSIS:
 
   require 'rubygems'
   require 'hoe'
   
-  Hoe.plugin :minitest
-  Hoe.plugin :perforce
+  Hoe.plugin :seattlerb
   
-  Hoe.spec 'hoe-seattlerb' do
-    developer('Ryan Davis', 'ryand-ruby@zenspider.com')
+  Hoe.spec 'blah' do
+    developer 'Ryan Davis', 'ryand-ruby@zenspider.com'
   
-    self.rubyforge_name = 'seattlerb'
+    email_to << 'blah@mailing_list.com'
   end
 
 == REQUIREMENTS:
