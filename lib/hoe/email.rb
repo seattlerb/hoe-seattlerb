@@ -13,7 +13,7 @@ module Hoe::Email
 
   def initialize_email
     with_config do |config, _|
-      @email_to = config["email"]["to"]
+      @email_to = config["email"]["to"] rescue nil
     end
   end
 
@@ -46,4 +46,3 @@ module Hoe::Email
     end
   end
 end
-
