@@ -1,3 +1,9 @@
+=== 1.2.0 / 2009-06-24
+
+* 1 minor enhancement:
+
+  * Add support for TLS servers like gmail via smtp_tls gem
+
 === 1.1.1 / 2009-06-22
 
 * 1 bug fix:
