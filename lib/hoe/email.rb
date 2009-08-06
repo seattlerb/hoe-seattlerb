@@ -30,6 +30,7 @@ module Hoe::Email
 
     desc "Send an announcement email."
     task :send_email do
+      warn "sending email"
       message = generate_email :full
 
       with_config do |conf, _|
@@ -56,6 +57,7 @@ module Hoe::Email
           server.send_message message, Array(email).first, *email_to
         end
       end
+      warn "...done"
     end
   end
 end
