@@ -1,3 +1,9 @@
+=== 1.2.1 / 2009-08-07
+
+* 1 minor enhancement:
+
+  * email task now says stuff
+
 === 1.2.0 / 2009-06-24
 
 * 1 minor enhancement:
