@@ -28,6 +28,41 @@ automation.
     email_to << 'blah@mailing_list.com'
   end
 
+== USING EMAIL PLUGIN:
+
+Once you activate the email plugin you should run:
+
+  % rake config_hoe
+
+A new section called email will be created at the bottom of the file.
+Fill this out as appropriate for your email host. An example gmail
+config is below:
+
+  email:
+    user: user.name
+    pass: xxxx
+    auth: plain
+    port: submission
+    to:
+    - ruby-talk@ruby-lang.org
+    host: smtp.gmail.com
+
+== USING PERFORCE PLUGIN:
+
+The perforce plugin adds a branch task attached to the prerelease
+task. As well as branching, it checks the manifest against the actual
+files and aborts if there is a mismatch.
+
+The file structure it expects is:
+
+* project_name
+  * x.y.z - versioned branch directories
+  * dev - the mainline of the project
+
+Since you're running from rake and rake always backs up to the work
+directory (presumed to be "dev" in this case) everything is done
+relative to that location.
+
 == REQUIREMENTS:
 
 * hoe
