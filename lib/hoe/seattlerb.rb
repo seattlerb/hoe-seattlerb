@@ -1,4 +1,4 @@
-Hoe.plugin :minitest, :perforce, :email
+Hoe.plugin :minitest, :perforce, :email, :rubyforge
 
 module Hoe::Seattlerb
   VERSION = "1.2.2"
