@@ -1,3 +1,9 @@
+=== 1.2.4 / 2010-12-10
+
+* 1 minor enhancement:
+
+  * After much discussion, I removed the rubyforge plugin activation.
+
 === 1.2.3 / 2010-12-08
 
 * 1 minor enhancement:
