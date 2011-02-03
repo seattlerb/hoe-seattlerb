@@ -12,6 +12,9 @@ module Hoe::Seattlerb
         dir  = "#{base}/#{rubyforge_name}/#{remote_rdoc_dir}"
 
         rdoc_locations << "#{config["username"]}@rubyforge.org:#{dir}"
+
+        base = "/data/www/docs.seattlerb.org"
+        rdoc_locations << "docs.seattlerb.org:#{base}/#{remote_rdoc_dir}"
       else
         warn "Couldn't read #{path}. Run `rubyforge setup`."
       end
