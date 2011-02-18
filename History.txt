@@ -1,3 +1,11 @@
+=== 1.2.5 / 2011-02-18
+
+* 3 minor enhancements:
+
+  * Added docs.seattlerb.org to the rdoc_locations
+  * Added rdoc_locations (pointing to rubyforge) so rdoc can go up w/o publishing gems to rubyforge
+  * Used Hoe's new test_prelude to gem activate minitest on 1.9
+
 === 1.2.4 / 2010-12-10
 
 * 1 minor enhancement:
