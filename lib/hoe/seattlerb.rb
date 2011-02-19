@@ -1,7 +1,7 @@
 Hoe.plugin :minitest, :perforce, :email
 
 module Hoe::Seattlerb
-  VERSION = "1.2.5"
+  VERSION = "1.2.6"
 
   def define_seattlerb_tasks
     if Hoe.plugins.include? :publish then

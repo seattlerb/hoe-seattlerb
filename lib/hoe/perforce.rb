@@ -26,6 +26,12 @@ require 'find'
 # structure can accommodate either but the code below is implicit.
 
 module Hoe::Perforce
+  attr_accessor :perforce_ignore
+
+  def initialize_perforce
+    self.perforce_ignore = []
+  end
+
   def define_perforce_tasks
     warn :define_perforce_tasks if $DEBUG
 
@@ -72,6 +78,8 @@ module Hoe::Perforce
     raise "#{manifest_file} does not exist" unless test ?f, manifest_file
     manifest = File.new(manifest_file).readlines.map { |x| x.strip }
 
+    manifest -= perforce_ignore
+
     local_manifest = []
 
     Dir.chdir manifest_dir do
@@ -80,6 +88,8 @@ module Hoe::Perforce
         local_manifest << f.sub(/^\.\//, '') if File.file? f
       end
     end
+
+    local_manifest -= perforce_ignore
 
     extra_files   = local_manifest - manifest
     missing_files = manifest - local_manifest
