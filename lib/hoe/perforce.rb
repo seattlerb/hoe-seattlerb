@@ -77,14 +77,18 @@ module Hoe::Perforce
     manifest_file = "#{manifest_dir}/Manifest.txt"
     raise "#{manifest_file} does not exist" unless test ?f, manifest_file
     manifest = File.new(manifest_file).readlines.map { |x| x.strip }
-
     manifest -= perforce_ignore
+
+    exclusions = with_config do |config, _|
+      config["exclude"]
+    end
 
     local_manifest = []
 
     Dir.chdir manifest_dir do
       system 'rake clean'
       Find.find '.' do |f|
+        next if f =~ exclusions
         local_manifest << f.sub(/^\.\//, '') if File.file? f
       end
     end
