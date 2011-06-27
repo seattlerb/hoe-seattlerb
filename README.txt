@@ -1,6 +1,7 @@
-= hoe_seattlerb
+= hoe-seattlerb
 
-* http://seattlerb.rubyforge.org/hoe-seattlerb
+home :: https://github.com/seattlerb/hoe-seattlerb
+rdoc :: http://seattlerb.rubyforge.org/hoe-seattlerb
 
 == DESCRIPTION:
 
@@ -75,7 +76,7 @@ relative to that location.
 
 (The MIT License)
 
-Copyright (c) 2009 Ryan Davis, seattle.rb
+Copyright (c) Ryan Davis, seattle.rb
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
