@@ -1,3 +1,10 @@
+=== 1.2.6 / 2011-08-16
+
+* 2 minor enhancement:
+
+  * Added perforce_ignore accessor and "exclude" key in config to avoid isolate files during manifest check.
+  * Moved hoe/minitest to the minitest project.
+
 === 1.2.5 / 2011-02-18
 
 * 3 minor enhancements:
