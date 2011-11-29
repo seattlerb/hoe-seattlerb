@@ -1,3 +1,9 @@
+=== 1.2.8 / 2011-11-28
+
+* 1 bug fix:
+
+  * Moved the rdoc dependency to the publish plugin in hoe
+
 === 1.2.7 / 2011-10-04
 
 * 1 minor enhancement:
