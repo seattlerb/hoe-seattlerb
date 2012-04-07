@@ -11,7 +11,6 @@ automation.
 
 == FEATURES/PROBLEMS:
 
-* hoe/minitest  - switches your project to minitest.
 * hoe/perforce  - automating how we release with perforce.
 * hoe/email     - automates sending release email.
 * hoe/seattlerb - activates all the seattlerb plugins.
