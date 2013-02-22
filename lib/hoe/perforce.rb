@@ -60,6 +60,11 @@ module Hoe::Perforce
     task :postrelease => :announce do
       system 'rake clean'
     end
+
+    desc "Generate historical flog/flay data for all releases"
+    task :history do
+      p4_history
+    end
   end
 
   ##
@@ -126,5 +131,19 @@ module Hoe::Perforce
 
   def p4_submit description
     p4sh "p4 submit -d #{description.inspect} ..."
+  end
+
+  def p4_versions
+    dirs = Dir["../[0-9]*"].sort_by { |s| Gem::Version.new(File.basename(s)) }
+    dirs << "../dev"
+    dirs.map { |d| File.basename d }
+  end
+
+  def p4_history
+    history p4_versions do |version|
+      Dir.chdir "../#{version}" do
+        flog_flay
+      end
+    end
   end
 end
