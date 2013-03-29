@@ -26,11 +26,22 @@ require 'find'
 # structure can accommodate either but the code below is implicit.
 
 module Hoe::Perforce
+
+  ##
+  # Files fore perforce to ignore. Probably not needed now that they
+  # support a dot-ignore file. I have yet to use that so... yeah.
+
   attr_accessor :perforce_ignore
+
+  ##
+  # Initializes the perforce plugin.
 
   def initialize_perforce
     self.perforce_ignore = []
   end
+
+  ##
+  # Defines tasks for the perforce plugin.
 
   def define_perforce_tasks
     warn :define_perforce_tasks if $DEBUG
@@ -78,6 +89,9 @@ module Hoe::Perforce
     sh "#{cmd};"
   end
 
+  ##
+  # Audit the manifest file against files on the file system.
+
   def validate_manifest_file manifest_dir
     manifest_file = "#{manifest_dir}/Manifest.txt"
     raise "#{manifest_file} does not exist" unless test ?f, manifest_file
@@ -118,10 +132,16 @@ module Hoe::Perforce
     raise msg.join("\n") unless msg.empty?
   end
 
+  ##
+  # Revert the pending (release) directory.
+
   def p4_revert dir
     puts "reverting #{dir}"
     p4sh "p4 revert #{dir}/..."
   end
+
+  ##
+  # Branch a release from +from+ to +to+.
 
   def p4_integrate from, to
     opened = `p4 opened ... 2>&1`
@@ -129,15 +149,24 @@ module Hoe::Perforce
     p4sh "p4 integrate #{from}/... #{to}/..."
   end
 
+  ##
+  # Submit the current directory with a description message.
+
   def p4_submit description
     p4sh "p4 submit -d #{description.inspect} ..."
   end
+
+  ##
+  # Return all version directories (and dev).
 
   def p4_versions
     dirs = Dir["../[0-9]*"].sort_by { |s| Gem::Version.new(File.basename(s)) }
     dirs << "../dev"
     dirs.map { |d| File.basename d }
   end
+
+  ##
+  # Return the flog & flay history of all releases.
 
   def p4_history
     history p4_versions do |version|

@@ -1,3 +1,6 @@
+##
+# Email plugin for Hoe.
+
 module Hoe::Email
 
   Hoe::DEFAULT_CONFIG["email"] = {
@@ -10,13 +13,22 @@ module Hoe::Email
     "tls"  => nil,
   }
 
+  ##
+  # Who to send email to.
+
   attr_reader :email_to
+
+  ##
+  # Initialize the email plugin. Get the email/to from hoe's config.
 
   def initialize_email
     with_config do |config, _|
       @email_to = config["email"]["to"] rescue nil
     end
   end
+
+  ##
+  # Define email tasks.
 
   def define_email_tasks
     require 'net/smtp'

@@ -1,7 +1,16 @@
 Hoe.plugin :minitest, :history, :perforce, :email
 
+class Hoe; end # :nodoc: stfu rdoc... *sigh*
+
+##
+# Top level Seattlerb plugin for Hoe. Doesn't really do anything but
+# pull in other default plugins.
+
 module Hoe::Seattlerb
-  VERSION = "1.2.9"
+  VERSION = "1.2.9" # :nodoc:
+
+  ##
+  # Define seattlerb's rdoc location.
 
   def define_seattlerb_tasks
     if Hoe.plugins.include? :publish then

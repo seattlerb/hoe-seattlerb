@@ -1,7 +1,15 @@
+##
+# History plugin for Hoe. Allows you to calculate all of the flog &
+# flay scores over the releases of your project in an SCM independent
+# way.
+
 module Hoe::History
-  def define_history_tasks
+  def define_history_tasks # :nodoc:
     # do nothing
   end
+
+  ##
+  # Calculate the flog and flay score for a Hoe project.
 
   def flog_flay
     flog = `flog -s -c $(cat Manifest.txt | grep -v txt$) 2>/dev/null`
@@ -14,10 +22,16 @@ module Hoe::History
     return flog_total, flog_avg, flay_total
   end
 
+  ##
+  # Load cached history.
+
   def load_history
     require "yaml"
     YAML.load_file(".history.yaml") rescue {}
   end
+
+  ##
+  # Save cached history.
 
   def save_history data
     require "yaml"
@@ -25,6 +39,10 @@ module Hoe::History
       YAML.dump data, f
     end
   end
+
+  ##
+  # Calculate the history across all versions. Uses `versions` from an
+  # SCM plugin to figure out how to deal with the SCM.
 
   def history versions
     history = load_history
