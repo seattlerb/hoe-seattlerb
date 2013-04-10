@@ -7,7 +7,7 @@ class Hoe; end # :nodoc: stfu rdoc... *sigh*
 # pull in other default plugins.
 
 module Hoe::Seattlerb
-  VERSION = "1.2.9" # :nodoc:
+  VERSION = "1.3.0" # :nodoc:
 
   ##
   # Define seattlerb's rdoc location.

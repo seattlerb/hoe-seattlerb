@@ -1,3 +1,11 @@
+=== 1.3.0 / 2013-04-09
+
+* 3 minor enhancements:
+
+  * Added history rake task. Outputs (and caches) flog/flay data across releases.
+  * Added hoe/history.rb -- providing historical flog & flay numbers across releases.
+  * Hooked in history plugin to be on by default.
+
 === 1.2.9 / 2012-11-09
 
 * 1 bug fix:
