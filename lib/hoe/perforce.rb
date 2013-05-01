@@ -48,17 +48,20 @@ module Hoe::Perforce
 
     desc "branch the project from dev to version dir"
     task :branch do
+      original_dir = File.basename(Dir.pwd)
+
       Dir.chdir ".."
 
-      target_dir = File.directory?(version) ? version : "dev"
-      branching  = target_dir == "dev"
+      target_dir = File.directory?(version) ? version : original_dir
+      branching  = target_dir == original_dir
       pkg = File.basename(Dir.pwd)
 
       begin
-        p4_integrate "dev", version if branching
+        p4_integrate original_dir, version if branching
         validate_manifest_file version
         p4_submit "Branching #{pkg} to version #{version}" if branching
       rescue => e
+        warn e
         p4_revert version
         raise e
       end
@@ -144,8 +147,8 @@ module Hoe::Perforce
   # Branch a release from +from+ to +to+.
 
   def p4_integrate from, to
-    opened = `p4 opened ... 2>&1`
-    raise "You have files open" unless opened =~ /file\(s\) not opened/
+    opened = `p4 opened #{from}/... #{to}/... 2>&1`
+    raise "You have files open" if opened =~ /\/\/[^#]+#\d+/
     p4sh "p4 integrate #{from}/... #{to}/..."
   end
 
