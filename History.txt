@@ -1,3 +1,9 @@
+=== 1.3.1 / 2013-05-10
+
+* 1 bug fix:
+
+  * Make perforce releases more resilient to working on different branch dirs
+
 === 1.3.0 / 2013-04-09
 
 * 3 minor enhancements:
