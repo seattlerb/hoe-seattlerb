@@ -53,7 +53,7 @@ module Hoe::Perforce
       Dir.chdir ".."
 
       target_dir = File.directory?(version) ? version : original_dir
-      branching  = target_dir == original_dir
+      branching  = target_dir == original_dir && target_dir != version
       pkg = File.basename(Dir.pwd)
 
       begin
