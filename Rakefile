@@ -9,8 +9,7 @@ Hoe.plugin :seattlerb
 
 Hoe.spec 'hoe-seattlerb' do
   developer('Ryan Davis', 'ryand-ruby@zenspider.com')
-
-  self.rubyforge_name = 'seattlerb'
+  license "MIT"
 
   blog_categories << "Seattle.rb" << "hoe"
 end
