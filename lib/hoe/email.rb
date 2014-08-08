@@ -39,6 +39,7 @@ module Hoe::Email
 
     # attach to announcements
     task :announce => :send_email
+    task :post_blog => :send_email # force email to the front
 
     desc "Send an announcement email."
     task :send_email do
