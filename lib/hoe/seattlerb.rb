@@ -15,7 +15,7 @@ module Hoe::Seattlerb
   def define_seattlerb_tasks
     if Hoe.plugins.include? :publish then
       base = "/data/www/docs.seattlerb.org"
-      rdoc_locations << "docs.seattlerb.org:#{base}/#{remote_rdoc_dir}"
+      rdoc_locations << "docs-push.seattlerb.org:#{base}/#{remote_rdoc_dir}"
     end
   end
 end
