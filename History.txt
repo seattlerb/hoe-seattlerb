@@ -1,3 +1,9 @@
+=== 1.3.4 / 2015-01-09
+
+* 1 bug fix:
+
+  * Fixed rdoc_locations for docs.seattlerb.org.
+
 === 1.3.3 / 2014-08-08
 
 * 1 minor enhancement:
