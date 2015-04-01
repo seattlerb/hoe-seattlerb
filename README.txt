@@ -6,7 +6,7 @@ rdoc :: http://seattlerb.rubyforge.org/hoe-seattlerb
 == DESCRIPTION:
 
 Hoe plugins providing tasks used by seattle.rb including minitest,
-perforce, and email providing full front-to-back release/annouce
+perforce, and email providing full front-to-back release/announce
 automation.
 
 == FEATURES/PROBLEMS:
