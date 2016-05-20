@@ -66,8 +66,12 @@ module Hoe::Email
         smtp = Net::SMTP.new(host, port)
         smtp.set_debug_output $stderr if $DEBUG
         smtp.enable_starttls if tls
-        smtp.start(*start_args) do |server|
-          server.send_message message, Array(email).first, *email_to
+        begin
+          smtp.start(*start_args) do |server|
+            server.send_message message, Array(email).first, *email_to
+          end
+        rescue Errno::ETIMEDOUT => e
+          warn "sending email timed out: #{e.message}"
         end
       end
       warn "...done"
