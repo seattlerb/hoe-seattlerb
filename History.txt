@@ -1,3 +1,9 @@
+=== 1.3.5 / 2016-06-13
+
+* 1 bug fix:
+
+  * Capture smtp timeout, warn, and move on. Caught by ISP blocking email.
+
 === 1.3.4 / 2015-01-09
 
 * 1 bug fix:
